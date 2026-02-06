@@ -58,7 +58,7 @@ public class SamHolder
         size--;
     }
 
-    public void addWithinBucket(int userInputIndex, String userInputElement)
+    public void addWithinSamuel02052026Bucket(int userInputIndex, String userInputElement)
     {
         String[] temp = bucket;
 

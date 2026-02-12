@@ -1,26 +1,30 @@
 package Classwork2;
 
-public class SamHolder
+import java.lang.reflect.Array;
+import java.util.Arrays;
+public class SamHolder<T>
 {
 
-    private String[] bucket;
+    private T[] bucket;
     private int size;
 
     public SamHolder()
     {//constructor "initializes global variables"
-        bucket = new String[10];
+
+        //Todo
+        bucket = (T[]) new Object[size];//T[];
         size = 0;
     }
 
     public SamHolder(int userInputSize)
     {
-        bucket = new String[userInputSize];
+        bucket = (T[]) new Object[userInputSize];
         size = 0;
     }
 
-    public SamHolder(String[] userInputBucket)
+    public SamHolder(T[] userInputBucket)
     {
-        bucket = new String[userInputBucket.length];
+        bucket = (T[]) new Object[userInputBucket.length];
         for (int i = 0; i < userInputBucket.length; i++)
         {
             bucket[i] = userInputBucket[i];
@@ -28,12 +32,12 @@ public class SamHolder
         size = userInputBucket.length;
     }
 
-    public String[] getBucket()
+    public T[] getBucket()
     {
         return bucket;
     }
 
-    public String getBucketElement(int userInputIndex)
+    public T getBucketElement(int userInputIndex)
     {
         return bucket[userInputIndex];
     }
@@ -48,7 +52,7 @@ public class SamHolder
 
     public void remove(int userInputIndex)
     {
-        String[] temp = bucket;
+        T[] temp = (T[]) new Object[size];
 
         for (int i = userInputIndex; i < size; i++)
         {
@@ -58,11 +62,11 @@ public class SamHolder
         size--;
     }
 
-    public void addWithinSamuel02052026Bucket(int userInputIndex, String userInputElement)
+    public void addWithinSamuel02052026Bucket(int userInputIndex, T userInputElement)
     {
-        String[] temp = bucket;
+        T[] temp = bucket;
 
-        bucket = new String[bucket.length+1];
+        bucket = (T[]) new Object[bucket.length+1];
         for (int i = 0; i < userInputIndex; i++)
         {
             bucket[i] = temp[i];
@@ -77,7 +81,7 @@ public class SamHolder
 
     public void clear()
     {
-        bucket = new String[bucket.length];
+        bucket = (T[]) new Object[bucket.length];
         size = 0;
     }
 
@@ -86,7 +90,7 @@ public class SamHolder
         return size;
     }
 
-    public void addToBucket(String userInputToBucket)
+    public void addToBucket(T userInputToBucket)
     {
         if (size < bucket.length)
         {
@@ -95,10 +99,11 @@ public class SamHolder
         }
         else
         {
-            String[] temp = new String[size];
+            T[] temp = (T[]) new Object[size];
+
             temp = bucket; //create a temp variable, and store the current value of bucket within
 
-            bucket = new String[size*2]; //empty bucket and double size
+            bucket = (T[]) new Object[size*2]; //empty bucket and double size
 
             for (int i = 0; i<size; i++) //assign each temp value to the parts of bucket
             {
@@ -112,7 +117,7 @@ public class SamHolder
     //Part 6 Methods
     public void addToEnd()
     {
-        addToBucket("END to END");
+        addToBucket((T) new Object());
     }
 
     public SamHolder cloneClass()
@@ -120,7 +125,7 @@ public class SamHolder
         return new SamHolder(bucket);
     }
 
-    public void replace(String userInputElement, int userInputIndex)
+    public void replace(T userInputElement, int userInputIndex)
     {
         bucket[userInputIndex] = userInputElement;
     }
@@ -152,8 +157,8 @@ public class SamHolder
 
     public void trimToSize()
     {
-        String[] temp = bucket;
-        bucket = new String[size];
+        T[] temp = bucket;
+        bucket = (T[]) new Object[size];
         for (int i = 0; i < size; i++)
         {
             bucket[i] = temp[i];
